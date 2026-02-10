@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CakeyNuts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a67c52',
+                            600: '#8a623e',
+                            700: '#6f4e37',
+                            800: '#5c4033',
+                            900: '#4a332a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fdf8f6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+
+<body class="text-brand-900 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-serif text-brand-700 tracking-wide">
+                Cakey<span class="text-brand-500">Nuts</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="index.html" class="hover:text-brand-500 transition-colors">Home</a>
+                <a href="menu.html" class="hover:text-brand-500 transition-colors">Menu</a>
+                <a href="about.html" class="text-brand-600 font-bold transition-colors">About</a>
+                <a href="contact.html" class="hover:text-brand-500 transition-colors">Contact</a>
+                <a href="menu.html"
+                    class="px-6 py-2 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition-transform transform hover:scale-105 shadow-lg">Order
+                    Now</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-brand-700 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white border-t border-brand-100 absolute w-full left-0 top-full shadow-lg">
+            <div class="px-6 py-4 flex flex-col space-y-4 text-center">
+                <a href="index.html" class="text-brand-700 block py-2 hover:bg-brand-50">Home</a>
+                <a href="menu.html" class="text-brand-700 block py-2 hover:bg-brand-50">Menu</a>
+                <a href="about.html" class="text-brand-700 block py-2 bg-brand-50 font-bold">About</a>
+                <a href="contact.html" class="text-brand-700 block py-2 hover:bg-brand-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-brand-900 text-white pt-32 pb-20 text-center relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+        </div>
+        <div class="relative z-10 container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Story</h1>
+            <p class="text-lg md:text-xl text-brand-200 max-w-2xl mx-auto">From a small kitchen to your heart.</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Baker mixing ingredients"
+                        class="rounded-2xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-brand-800 font-serif">Baking with Passion Since
+                        2015</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        CakeyNuts began with a simple mission: to create cakes that not only look spectacular but taste
+                        even better. What started as a hobby in a small home kitchen has grown into a beloved local
+                        bakery, known for our attention to detail and premium ingredients.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        We believe that every celebration deserves a centerpiece that sparks joy. That's why we pour our
+                        heart and soul into every batter, frosting, and decoration. Whether it's a grand wedding or a
+                        quiet afternoon tea, we're here to make it sweeter.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-1 bg-brand-500 rounded"></div>
+                        <span class="text-brand-600 font-serif italic text-xl">The CakeyNuts Team</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Process -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-brand-800 font-serif">Why Choose Us?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-brand-50 rounded-xl hover:shadow-lg transition-all">
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-600 font-bold text-2xl">
+                        1</div>
+                    <h3 class="text-xl font-bold mb-2">Quality First</h3>
+                    <p class="text-gray-600">We never compromise on the quality of our butter, chocolate, or flour.</p>
+                </div>
+                <div class="p-8 bg-brand-50 rounded-xl hover:shadow-lg transition-all">
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-600 font-bold text-2xl">
+                        2</div>
+                    <h3 class="text-xl font-bold mb-2">Artistic Design</h3>
+                    <p class="text-gray-600">Our decorators are artists who can turn any vision into edible reality.</p>
+                </div>
+                <div class="p-8 bg-brand-50 rounded-xl hover:shadow-lg transition-all">
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-600 font-bold text-2xl">
+                        3</div>
+                    <h3 class="text-xl font-bold mb-2">Community Loved</h3>
+                    <p class="text-gray-600">Proudly serving our local community with thousands of happy customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-900 text-white py-12 text-center">
+        <p class="text-brand-300">&copy; 2024 CakeyNuts.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

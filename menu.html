@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - CakeyNuts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a67c52',
+                            600: '#8a623e',
+                            700: '#6f4e37',
+                            800: '#5c4033',
+                            900: '#4a332a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fdf8f6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Simple scroll animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="text-brand-900 antialiased">
+
+    <!-- Navigation (Reused) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-serif text-brand-700 tracking-wide">
+                Cakey<span class="text-brand-500">Nuts</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="index.html" class="hover:text-brand-500 transition-colors">Home</a>
+                <a href="menu.html" class="text-brand-600 font-bold transition-colors">Menu</a>
+                <a href="about.html" class="hover:text-brand-500 transition-colors">About</a>
+                <a href="contact.html" class="hover:text-brand-500 transition-colors">Contact</a>
+                <a href="menu.html"
+                    class="px-6 py-2 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition-transform transform hover:scale-105 shadow-lg">Order
+                    Now</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-brand-700 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white border-t border-brand-100 absolute w-full left-0 top-full shadow-lg">
+            <div class="px-6 py-4 flex flex-col space-y-4 text-center">
+                <a href="index.html" class="text-brand-700 block py-2 hover:bg-brand-50">Home</a>
+                <a href="menu.html" class="text-brand-700 block py-2 bg-brand-50 font-bold">Menu</a>
+                <a href="about.html" class="text-brand-700 block py-2 hover:bg-brand-50">About</a>
+                <a href="contact.html" class="text-brand-700 block py-2 hover:bg-brand-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-brand-900 text-white pt-32 pb-20 text-center relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1626803775151-61d756612f97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+        </div>
+        <div class="relative z-10 container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Sweet Menu</h1>
+            <p class="text-lg md:text-xl text-brand-200 max-w-2xl mx-auto">Explore our collection of handcrafted cakes
+                and pastries.</p>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button
+                    class="filter-btn active px-6 py-2 rounded-full bg-brand-600 text-white font-semibold shadow-md transition-all hover:scale-105"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full bg-white text-brand-700 border border-brand-200 font-semibold hover:bg-brand-50 transition-all hover:scale-105"
+                    data-filter="cakes">Cakes</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full bg-white text-brand-700 border border-brand-200 font-semibold hover:bg-brand-50 transition-all hover:scale-105"
+                    data-filter="cupcakes">Cupcakes</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full bg-white text-brand-700 border border-brand-200 font-semibold hover:bg-brand-50 transition-all hover:scale-105"
+                    data-filter="desserts">Desserts</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+
+                <!-- Item 1: Cake -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="cakes">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Chocolate Royal"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">Royal Chocolate Ganache</h3>
+                            <span class="text-lg font-bold text-brand-600">$45.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Layers of dark chocolate sponge with rich ganache filling.
+                        </p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Cupcake -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="cupcakes">
+                    <img src="https://images.unsplash.com/photo-1614707267537-b85aaf80fd44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Red Velvet Cupcake"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">Red Velvet Delight</h3>
+                            <span class="text-lg font-bold text-brand-600">$4.50</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Classic red velvet with cream cheese frosting.</p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Item 3: Cake -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="cakes">
+                    <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Strawberry Shortcake"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">Strawberry Fields</h3>
+                            <span class="text-lg font-bold text-brand-600">$38.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Light vanilla sponge with fresh strawberries and whipped
+                            cream.</p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Item 4: Dessert -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec0273e8a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Macarons"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">French Macarons (Box of 6)</h3>
+                            <span class="text-lg font-bold text-brand-600">$18.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Assorted flavors including pistachio, raspberry, and
+                            chocolate.</p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Add
+                            to Cart</button>
+                    </div>
+                </div>
+                <!-- Item 5: Cupcakes -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="cupcakes">
+                    <img src="https://images.unsplash.com/photo-1599785209707-30eab2fc572f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Lemon Cupcake"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">Zesty Lemon Drop</h3>
+                            <span class="text-lg font-bold text-brand-600">$4.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Lemon filled cupcake with lemon buttercream.</p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Add
+                            to Cart</button>
+                    </div>
+                </div>
+                <!-- Item 6: Cake -->
+                <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                    data-category="cakes">
+                    <img src="https://images.unsplash.com/photo-1562967963-4696010a30b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Wedding Cake"
+                        class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-brand-800 font-serif">Classic Vanilla Wedding</h3>
+                            <span class="text-lg font-bold text-brand-600">$120.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Three-tier vanilla bean cake with elegant white frosting.
+                        </p>
+                        <button
+                            class="w-full py-2 border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white rounded-lg transition-colors font-semibold">Contact
+                            to Order</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Reused) -->
+    <footer class="bg-brand-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-brand-300">&copy; 2024 CakeyNuts. Making life sweeter.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Simple Filter Logic (Page Specific)
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.menu-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button style
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white');
+                    b.classList.add('bg-white', 'text-brand-700');
+                });
+                btn.classList.remove('bg-white', 'text-brand-700');
+                btn.classList.add('bg-brand-600', 'text-white');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                items.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.classList.add('fade-in', 'visible'), 50);
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('fade-in', 'visible');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
